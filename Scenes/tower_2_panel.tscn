@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx22hdmvw5p1a"]
+
+[ext_resource type="Script" path="res://Scenes/tower_2_panel.gd" id="1_o2r72"]
+[ext_resource type="Texture2D" uid="uid://cua3brag7owts" path="res://spritesJunior/holy cow-1.png.png" id="2_mlov4"]
+
+[node name="tower_2Panel" type="Panel"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_o2r72")
+
+[node name="HolyCow-1_png" type="Sprite2D" parent="."]
+position = Vector2(17, 15)
+scale = Vector2(0.234375, 0.25)
+texture = ExtResource("2_mlov4")
+
+[node name="Label" type="Label" parent="HolyCow-1_png"]
+modulate = Color(0.156863, 0.309804, 1, 1)
+offset_left = 17.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 35
+text = "30"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
