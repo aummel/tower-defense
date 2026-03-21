@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://y6ux2f70yy1h"]
+
+[ext_resource type="Script" path="res://Scenes/tower_1_panel.gd" id="1_nn4ke"]
+[ext_resource type="Texture2D" uid="uid://cn3y720w8yv6s" path="res://spritesJunior/Piskel Lobster.png" id="2_0pax8"]
+
+[node name="tower_1Panel" type="Panel"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_nn4ke")
+
+[node name="PiskelLobster" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_0pax8")
+
+[node name="Label" type="Label" parent="PiskelLobster"]
+modulate = Color(0.156863, 0.309804, 1, 1)
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 80.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 35
+text = "25
+"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
