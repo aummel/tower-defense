@@ -2,7 +2,7 @@ extends Panel
 @onready var tower = preload("res://Scenes/tower_2.tscn")
 var currTile = null
 var preview_tower: Node = null
-
+var targets = []
 
 func _on_gui_input(event):
 	if Game.gold < 25:
@@ -27,7 +27,7 @@ func _on_gui_input(event):
 			currTile = mapPath.get_cell_atlas_coords(0, tile, false)
 
 			# TowerDetector logic
-			var targets = []
+			
 			if preview_tower.has_node("TowerDetector"):
 				targets = preview_tower.get_node("TowerDetector").get_overlapping_bodies()
 
@@ -58,7 +58,7 @@ func _on_gui_input(event):
 			preview_tower = null
 
 			# Only place tower if on correct tile
-			if currTile == Vector2i(7, 1):
+			if currTile == Vector2i(7, 1) and targets.size() == 0:
 				var path = get_tree().get_root().get_node("Node2D/towers")
 				var newTower = tower.instantiate()
 				path.add_child(newTower)

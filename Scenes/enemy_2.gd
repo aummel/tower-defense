@@ -14,8 +14,9 @@ func _process(delta):
 
 	# Reached end of path
 	if get_parent().get_progress_ratio() >= 1:
-		queue_free()
 		Game.health -= 30
+		queue_free()
+		
 
 	# Enemy killed
 	if Health <= 0:

@@ -3,11 +3,11 @@ extends Panel
 @onready var tower = preload("res://Scenes/tower_1.tscn")
 var currTile
 var preview_tower: Node = null
-
+var targets = []
 func _on_gui_input(event):
 	if Game.gold < 25:
 		return  # not enough gold, ignore input
-
+	
 	# LEFT MOUSE BUTTON DOWN — spawn preview tower
 	if event is InputEventMouseButton and event.button_mask == 1:
 		print("left down")
@@ -27,7 +27,7 @@ func _on_gui_input(event):
 			currTile = mapPath.get_cell_atlas_coords(0, tile, false)
 
 			# TowerDetector logic
-			var targets = []
+			
 			if preview_tower.has_node("TowerDetector"):
 				targets = preview_tower.get_node("TowerDetector").get_overlapping_bodies()
 
@@ -58,7 +58,7 @@ func _on_gui_input(event):
 			preview_tower = null
 
 			# Only place tower if on correct tile
-			if currTile == Vector2i(7, 1):
+			if currTile == Vector2i(7, 1) and targets.size() == 0:
 				var path = get_tree().get_root().get_node("Node2D/towers")
 				var newTower = tower.instantiate()
 				path.add_child(newTower)
